@@ -1,0 +1,141 @@
+
+
+#overlay{ /* we set all of the properties for our overlay */
+    height:30%;
+    width:60%;
+    margin:0 auto;
+    background:white;
+    color:black;
+    padding:10px;
+    position:absolute;
+    top:10%;
+    left:30%;
+    z-index:1000;
+    display:none;
+    /* CSS 3 */
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -o-border-radius:10px;
+    border-radius:10px;
+
+    -webkit-box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+box-shadow: 0px -1px 5px 0px rgba(0,0,0,0.75);
+}
+
+#mask{ /* create are mask */
+    position:fixed;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.6);
+    z-index:500;
+    width:100%;
+    height:100%;
+    display:none;
+}
+/* use :target to look for a link to the overlay then we find our mask */
+#overlay:target, #overlay:target + #mask{
+    display:block;
+    opacity:1;
+}
+.close{ /* to make a nice looking pure CSS3 close button */
+    display:block;
+    position:absolute;
+    top:-20px;
+    right:-20px;
+    background:#00406b;
+    color:white;
+    height:40px;
+    width:40px;
+    line-height:40px;
+    font-size:35px;
+    text-decoration:none;
+    text-align:center;
+    font-weight:bold;
+    -webkit-border-radius:40px;
+    -moz-border-radius:40px;
+    -o-border-radius:40px;
+    border-radius:40px;
+}
+#open-overlay{ /* open the overlay */
+
+}
+
+
+
+//----------------
+$color-1: #0080dc;
+$color-2: #FFFFFF;
+$color-3: #323a45;
+$color-4: #e6e6e6;
+//----------------
+body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: color-3;
+}
+//----------------
+.pricing-switcher {
+  $bg-padding: 5px;
+  $button-width: 150px;
+  $button-height: 40px;
+  $animation-time: .3s;
+  
+  text-align: center;
+
+	.fieldset {
+		display: inline-block;
+		position: relative;
+		padding: $bg-padding;
+		border-radius: 50em;
+    background-color: lightgray;
+	}
+
+	input[type="radio"] {
+		position: absolute;
+		opacity: 0;
+	}
+
+	label {
+		position: relative;
+		z-index: 1;
+		display: inline-block;
+		float: left;
+		width: $button-width;
+		height: $button-height;
+		line-height: $button-height;
+		cursor: pointer;
+		color: $color-1;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    transition-delay: .1s;
+    transition: color $animation-time ease;
+	}
+    
+  input[type="radio"]:checked + label {
+    color: $color-2;
+    text-decoration: none;
+  }
+
+	.switch {
+		/* floating background */
+		position: absolute;
+		top: $bg-padding;
+		left: $bg-padding;
+		height: $button-height;
+		width: $button-width;
+		background-color: $color-1;
+		border-radius: 50em;
+		transition: transform $animation-time;
+	}
+
+	input[type="radio"]:checked + label + .switch, 
+	input[type="radio"]:checked + label:nth-of-type(n) + .switch {
+		/* use label:nth-of-type(n) to fix a bug on safari with multiple adjacent-sibling selectors*/
+  -webkit-transform: translateX($button-width);
+  -moz-transform: translateX($button-width);
+  -ms-transform: translateX($button-width);
+  -o-transform: translateX($button-width);
+  transform: translateX($button-width);
+	}
+}
